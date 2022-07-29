@@ -1,4 +1,4 @@
-# blog-client2
+# blog-client
 
 > A Vue.js project
 
