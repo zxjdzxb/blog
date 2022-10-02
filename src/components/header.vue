@@ -4,20 +4,32 @@
       <h1>Let's share</h1>
       <p>精品博客汇聚</p>
       <div class="btns">
-        <router-link to="/login"><el-button >立即登录</el-button></router-link>
-        <router-link to="/register"><el-button>注册账号</el-button></router-link>
+        <router-link to="/login">
+          <el-button>立即登录</el-button>
+        </router-link>
+        <router-link to="/register">
+          <el-button>注册账号</el-button>
+        </router-link>
       </div>
     </template>
     <template v-if="isLogin">
-      <h1><router-link to="/">首页</router-link></h1>
+      <h1 >
+        <router-link to="/" class="el-icon-setting"> Let's go</router-link>
+      </h1>
       <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       <div class="user">
         <img class="avatar" :src="user.avatar" :alt="user.username" :title="user.username">
         <ul>
-          <li><router-link to="/my">我的</router-link></li>
+          <li>
+            <router-link to="/my">我的</router-link>
+          </li>
           <li><a href="#" @click="onLogout">注销</a></li>
-          <li><router-link to="/login">登录账号</router-link></li>
-          <li><router-link to="/register">注册账号</router-link></li>
+          <li>
+            <router-link to="/login">登录账号</router-link>
+          </li>
+          <li>
+            <router-link to="/register">注册账号</router-link>
+          </li>
         </ul>
       </div>
     </template>
@@ -26,39 +38,40 @@
 
 <script>
 
-  import auth from '@/api/auth'
-  window.auth = auth
+import auth from '@/api/auth'
 
-  import { mapGetters, mapActions } from 'vuex'
+window.auth = auth
 
-  export default {
-    data() {
-      return {}
-    },
+import {mapGetters, mapActions} from 'vuex'
 
-    computed: {
-      ...mapGetters([
-        'isLogin',
-        'user'
-        ])
-    },
+export default {
+  data() {
+    return {}
+  },
 
-    created() {
-      this.checkLogin()
-    },
+  computed: {
+    ...mapGetters([
+      'isLogin',
+      'user'
+    ])
+  },
 
-    methods: {
-      ...mapActions([
-        'checkLogin',
-        'logout'
-        ]),
+  created() {
+    this.checkLogin()
+  },
 
-      onLogout() {
-        this.logout()
-      }
+  methods: {
+    ...mapActions([
+      'checkLogin',
+      'logout'
+    ]),
+
+    onLogout() {
+      this.logout()
     }
-
   }
+
+}
 </script>
 
 
@@ -77,6 +90,8 @@ header.no-login {
     font-size: 40px;
     margin: 60px 0 0 0;
     text-transform: uppercase;
+
+
   }
 
   p {
@@ -134,7 +149,7 @@ header.login {
       right: -50%;
       list-style: none;
       border: 1px solid #eaeaea;
-      margin:0;
+      margin: 0;
       padding: 0;
       background-color: #fff;
 
@@ -157,7 +172,6 @@ header.login {
     }
   }
 }
-
 
 
 </style>

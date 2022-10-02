@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>© xiedaimala.com 2018 wechat: xiedaimala01</p>
+    <p>© zxjdzxb | qq: 1660154581</p>
   </footer>
 </template>
 
