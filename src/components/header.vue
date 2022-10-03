@@ -14,7 +14,7 @@
     </template>
     <template v-if="isLogin">
       <h1 >
-        <router-link to="/" class="el-icon-setting"> Let's GO</router-link>
+        <router-link to="/" class="el-icon-eleme"> Let's GO</router-link>
       </h1>
       <router-link to="/create"><i class="edit el-icon-plus"></i></router-link>
       <div class="user">

@@ -5,7 +5,7 @@
     <el-input v-model="title"></el-input>
     <p class="msg">限30个字</p>
     <h3>内容简介</h3>
-    <el-input type="textarea" v-model="description"  :autosize="{ minRows: 2, maxRows: 6}"></el-input>
+    <el-input type="textarea" v-model="description" :autosize="{ minRows: 2, maxRows: 6}"></el-input>
     <p class="msg">限30个字</p>
     <h3>文章内容</h3>
     <el-input type="textarea" v-model="content" :autosize="{ minRows: 4, maxRows: 30}"></el-input>
@@ -18,11 +18,11 @@
   </div>
 </template>
 
-<script >
+<script>
 import blog from '@/api/blog'
 
 export default {
-  data () {
+  data() {
     return {
       blogId: null,
       title: '',
@@ -34,7 +34,7 @@ export default {
 
   created() {
     this.blogId = this.$route.params.blogId
-    blog.getDetail({ blogId: this.blogId }).then(res => {
+    blog.getDetail({blogId: this.blogId}).then(res => {
       this.title = res.data.title
       this.description = res.data.description
       this.content = res.data.content
@@ -44,17 +44,22 @@ export default {
 
   methods: {
     onEdit() {
-      blog.updateBlog({ blogId: this.blogId }, { title: this.title, content: this.content, description: this.description, atIndex: this.atIndex})
+      blog.updateBlog({blogId: this.blogId}, {
+        title: this.title,
+        content: this.content,
+        description: this.description,
+        atIndex: this.atIndex
+      })
         .then(res => {
           this.$message.success(res.msg)
-          this.$router.push({ path: `/detail/${res.data.id}`})
+          this.$router.push({path: `/detail/${res.data.id}`})
         })
     }
   }
 }
 </script>
 
-<style  lang="less">
+<style lang="less">
 @import "../assets/base.less";
 
 #edit, #create {
